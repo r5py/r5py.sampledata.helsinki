@@ -1,0 +1,97 @@
+# vim: set tabstop=2 softtabstop=2 shiftwidth=2 expandtab:
+
+name: Create a release and deploy to PyPi whenever a protected tag (v0.0.0) is created
+
+on:
+  push:
+    tags:
+      - v*.*.*
+
+jobs:
+  lint:
+    name: Linting code
+    runs-on: ubuntu-latest
+    container: python:3
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Install black and flake8
+        run: python -m pip install black flake8
+      - name: Lint using black
+        run: python -m black --check .
+      - name: Lint using flake8
+        run: python -m flake8 .
+
+  test:
+    name: Run tests
+    needs: lint
+    runs-on: ubuntu-latest
+    container: python:3
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Make sure test dependencies are installed
+        shell: bash -l {0}
+        run: |
+          pip install .[test]
+          pip uninstall .
+
+      - name: Run tests
+        run: python -m pytest
+
+  build:
+    name: Build wheel(s) and packages
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Install Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+      - name: Install build tools
+        run: python -m pip install build
+      - name: Build wheel(s) and packages
+        run: python -m build .
+      - name: Upload built packages
+        uses: actions/upload-artifact@v3
+        with:
+          name: package
+          path: dist/*.*
+
+  deploy:
+    name: Upload built package to PyPi
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - name: Download built artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: package
+          path: dist/
+      - name: Upload package to PyPi
+        uses: pypa/gh-action-pypi-publish@release/v1.5
+        with:
+          user: __token__
+          password: ${{ secrets.PYPI_API_TOKEN }}
+          skip_existing: true
+
+  release:
+    name: Create a new release
+    runs-on: ubuntu-latest
+    needs: [deploy]
+    permissions:
+      contents: write
+    steps:
+      - name: Download built artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: package
+          path: dist/
+      - name: Create release and upload package
+        uses: softprops/action-gh-release@v1
+        with:
+          files: dist/*
+
