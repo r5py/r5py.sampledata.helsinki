@@ -5,7 +5,7 @@ import importlib
 import pytest
 
 
-PACKAGE_NAME = "r5py.sampledata.CHANGE_THIS"
+PACKAGE_NAME = "r5py.sampledata.helsinki"
 
 
 @pytest.fixture

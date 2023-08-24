@@ -1,31 +1,40 @@
-# TEMPLATE for r5py sample data sets
+# An *r5py* sample data set that covers the centre of Helsinki
 
-This is a template repository for creating new r5py sample data sets. R5py
-sample data sets are [namespace
-packages](https://packaging.python.org/en/latest/guides/packaging-namespace-packages/#native-namespace-packages)
-underneath the namespace `r5py.sampledata`.
+This package contains the following data sets:
 
-To create a new sample data set, 
+## `r5py.sampledata.helsinki.gtfs`
 
-- create a repository from this template, and adjust `pyproject.toml` (look
-  out for ‘CHANGE_THIS’, and also 
-- adapt the list of authors accordingly. Then,
-- rename the directory `src/r5py/sampledata/CHANGE_THIS` to a *lowercase*
-  name reflecting the content of the sample data set (e.g., the name of the
-  city it covers). 
-- Add the sample files to `data/`,
-- and edit `src/r5py/sampledata/NOW_CHANGED_DIRECTORY_NAME/__init__.py`: 
-    - change `BASE_URL`, and
-    - include one variable per data set that is an
-      `r5py.util.data_set.DataSet()` with the source url and the SHA256
-      checksum as parameters, and
-    - add the data set variable to `__all__`. Then,
-    - update the `__version__` string, and
-- edit this README to tell about the data set. Also, don’t forget to
-- change `CHANGE_THIS` in `tests/test_data_sets.py`.
+General Transit Feed Specification ([GTFS](https://developers.google.com/transit/gtfs/reference))
+data representing the public transport schedules, stop locations, lines, etc.
+The data was created by Helsinki Region Transport (HLS) and obtained from
+[TransitFeeds.com](https://transitfeeds.com/p/helsinki-regional-transport/735).
 
-Once you have added all data sets, add a tag (equal to `f"v{__version__}`) and
-push the changes and tags.
+This GTFS data set is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
-For a detailed example, see
-[r5py.sampledata.sao_paulo](https://github.com/r5py/r5py.sampledata.sao_paulo).
+
+## `r5py.sampledata.helsinki.osm_pbf`
+
+A sample dataset representing OpenStreetMap data in protocolbuffer binary format (PBF),
+which was obtained from [Geofabrik](https://download.geofabrik.de/europe/finland.html).
+The data is licensed under the [Open Data Commons Open Database License (ODbL)](https://www.openstreetmap.org/copyright).
+
+We used [osmium](https://osmcode.org/osmium-tool/) to crop the data to the given extent.
+
+
+## `r5py.sampledata.helsinki.population_grid`
+
+A sample dataset representing the population of Helsinki.
+The data is obtained from Helsinki Region Environmental Services (HSY).
+The data is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+The data is downloaded from the Helsinki Region Environmental Services’ (HSY)
+*Web Feature Service (WFS)* endpoint (see the
+[Helsinki Region Infoshare’s data description](https://hri.fi/data/en_GB/dataset/vaestotietoruudukko)).
+We used [a script](scripts/download_population_grid.py), that we share with this package, to download
+the data set and adapt it to the requirements of r5py’s documentation. Namely, we:
+
+- reindexed the data,
+- omitted some columns,
+- renamed the remaining columns from Finnish to English
+- reprojected the data to "EPSG:4326", and
+- extracted centroids from the grid polygons (for the point data set)
