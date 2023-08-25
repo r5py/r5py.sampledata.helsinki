@@ -16,8 +16,4 @@ def _module():
 
 @pytest.fixture
 def data_sets(_module):
-    yield [
-        getattr(_module, var)
-        for var in _module.__all__
-        if var != "__version__"
-    ]
+    yield [getattr(_module, var) for var in _module.__all__ if var != "__version__"]
