@@ -15,9 +15,7 @@ authors = [
     { name = "Henrikki Tenkanen" }
 ]
 
-dependencies = [
-    "r5py>=0.1.1.dev0"
-]
+dependencies = []
 requires-python = ">=3.8"
 
 classifiers = [
@@ -32,7 +30,7 @@ license = {text = "GPL-3.0-or-later or MIT"}
 dynamic = ["version"]
 
 [project.optional-dependencies]
-test = ["pytest"]
+test = ["pytest", "r5py>=0.1.1.dev0"]
 
 [project.urls]
 Documentation = "https://r5py.readthedocs.org/"
