@@ -14,7 +14,9 @@ __all__ = ["__version__"]
 try:
     from r5py.util.data_set import DataSet
 
-    BASE_URL = f"https://github.com/r5py/r5py.sampledata.helsinki/raw/v{__version__}/data/"
+    BASE_URL = (
+        f"https://github.com/r5py/r5py.sampledata.helsinki/raw/v{__version__}/data/"
+    )
 
     gtfs = DataSet(
         f"{BASE_URL}/helsinki_gtfs.zip",
