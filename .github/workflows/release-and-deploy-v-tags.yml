@@ -31,13 +31,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Install JVM
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: 18
+
       - name: Make sure test dependencies are installed
         shell: bash -l {0}
-        env:
-          REPOSITORY_NAME: ${{ github.event.repository.name }}
-        run: |
-          pip install .[test]
-          pip uninstall -y "${REPOSITORY_NAME}"
+        run: pip install .[test]
 
       - name: Run tests
         run: python -m pytest
