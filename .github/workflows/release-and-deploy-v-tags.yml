@@ -33,9 +33,11 @@ jobs:
 
       - name: Make sure test dependencies are installed
         shell: bash -l {0}
+        env:
+          REPOSITORY_NAME: ${{ github.event.repository.name }}
         run: |
           pip install .[test]
-          pip uninstall .
+          pip uninstall "${REPOSITORY_NAME}"
 
       - name: Run tests
         run: python -m pytest
