@@ -4,10 +4,7 @@
 """Sample data set for r5py, covering Helsinki city centre, downloaded upon first access."""
 
 
-import warnings
-
-
-__version__ = "0.1.1.dev1"
+__version__ = "0.1.1.dev2"
 __all__ = ["__version__"]
 
 
@@ -37,8 +34,7 @@ try:
         "population_grid",
     ]
 
-except ImportError:
-    warnings.warn(
-        "Install r5py>=0.1.1.dev1 to use the sample data sets",
-        RuntimeWarning,
-    )
+except ImportError as exception:
+    raise ImportError(
+        "Install r5py>=0.1.1.dev1 to use the sample data sets"
+    ) from exception
