@@ -41,7 +41,6 @@ jobs:
           distribution: temurin
           java-version: 18
 
-      - run: pip install git+https://github.com/christophfink/r5py.git@347-sampledata
       - run: pip install .[tests]
 
       - run: python -m pytest
