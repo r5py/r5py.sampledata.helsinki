@@ -30,7 +30,7 @@ license = {text = "GPL-3.0-or-later or MIT"}
 dynamic = ["version"]
 
 [project.optional-dependencies]
-test = ["pytest", "r5py>=0.1.1.dev0"]
+test = ["pytest", "r5py>=0.1.1.dev1"]
 
 [project.urls]
 Documentation = "https://r5py.readthedocs.org/"
