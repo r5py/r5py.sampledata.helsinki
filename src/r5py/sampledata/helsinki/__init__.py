@@ -4,12 +4,15 @@
 """Sample data set for r5py, covering Helsinki city centre, downloaded upon first access."""
 
 
-__version__ = "0.1.1"
+__version__ = "0.1.1.post1"
 __all__ = ["__version__"]
 
 
 try:
-    from r5py.util.sample_data_set import SampleDataSet
+    try:
+        from r5py.util.sample_data_set import SampleDataSet
+    except ImportError:
+        from r5py.util.data_set import DataSet as SampleDataSet
 
     BASE_URL = (
         f"https://github.com/r5py/r5py.sampledata.helsinki/raw/v{__version__}/data/"
@@ -36,5 +39,5 @@ try:
 
 except ImportError as exception:
     raise ImportError(
-        "Install r5py>=0.1.1.dev1 to use the sample data sets"
+        "Install r5py>=0.1.0 to use the sample data sets"
     ) from exception

@@ -16,7 +16,7 @@ authors = [
 ]
 
 dependencies = []
-requires-python = ">=3.8"
+requires-python = ">=3.9"
 
 classifiers = [
     "Programming Language :: Python :: 3",
@@ -30,7 +30,7 @@ license = {text = "GPL-3.0-or-later or MIT"}
 dynamic = ["version"]
 
 [project.optional-dependencies]
-tests = ["pytest", "r5py>=0.1.1.dev1"]
+tests = ["pytest", "r5py>=0.1.0"]
 
 [project.urls]
 Documentation = "https://r5py.readthedocs.org/"
