@@ -7,6 +7,7 @@ on:
     tags:
       - v*.*.*
       - v*.*.*.dev*
+      - v*.*.*.post*
 
 jobs:
   lint:
