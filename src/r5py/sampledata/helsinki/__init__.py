@@ -38,6 +38,4 @@ try:
     ]
 
 except ImportError as exception:
-    raise ImportError(
-        "Install r5py>=0.1.0 to use the sample data sets"
-    ) from exception
+    raise ImportError("Install r5py>=0.1.0 to use the sample data sets") from exception
