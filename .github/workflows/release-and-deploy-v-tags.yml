@@ -54,7 +54,7 @@ jobs:
           distribution: temurin
           java-version: 21
 
-      - run: pip install .[test]
+      - run: pip install .[tests]
 
       - run: python -m pytest
 
