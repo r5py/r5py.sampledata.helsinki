@@ -1,3 +1,6 @@
+- **0.1.3** (2025-01-28):
+    - migrate to PyPi TrustedPublisher authentication
+
 - **0.1.0** (2023-08-24):
     - first release as separate package
 
