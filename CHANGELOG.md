@@ -1,3 +1,6 @@
+- **1.0.2** (2025-03-14):
+    - include *all* tests in sdist
+
 - **1.0.0** (2025-03-11):
     - migrate to PyPi TrustedPublisher authentication
 
