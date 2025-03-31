@@ -4,7 +4,7 @@
 """Sample data set for r5py, covering Helsinki city centre, downloaded upon first access."""
 
 
-__version__ = "1.0.2.post1"
+__version__ = "1.0.3"
 __all__ = ["__version__"]
 
 
@@ -18,6 +18,10 @@ try:
         f"https://github.com/r5py/r5py.sampledata.helsinki/raw/v{__version__}/data/"
     )
 
+    elevation_model = SampleDataSet(
+        f"{BASE_URL}/elevation_model_2021.tif",
+        "455c9ebdf4a7e44c265a1a7f5ca75634f438c3d80c6b0f22acbb7511199261a1",
+    )
     gtfs = SampleDataSet(
         f"{BASE_URL}/helsinki_gtfs.zip",
         "8ecccde3e76441b47e90c7f311fc57a8d38df92e9ee592e8f440a9b7e3abf228",

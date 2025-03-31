@@ -1,3 +1,6 @@
+- **1.0.3** (2025-03-31):
+    - add an elevation model data set
+
 - **1.0.2** (2025-03-14):
     - include *all* tests in sdist
 
