@@ -38,3 +38,16 @@ the data set and adapt it to the requirements of r5py’s documentation. Namely,
 - renamed the remaining columns from Finnish to English
 - reprojected the data to "EPSG:4326", and
 - extracted centroids from the grid polygons (for the point data set)
+
+
+### `elevation_model_2021.tif` 
+
+A sample data set representing the terrain of Helsinki city centre.
+The data was obtained from the City of Helsinki.
+The data is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+The data was downloaded from the City of Helsinki’s *Web Coverage Service
+(WCS)*’ endpoint (see the [Helsinki Region Inforshare’s data
+description](https://hri.fi/data/fi/dataset/helsingin-korkeusmalli)).  We used
+[a script](scripts/download_elevation_model.py), that we share with this
+package, to download an crop the data to the sample data extent.
