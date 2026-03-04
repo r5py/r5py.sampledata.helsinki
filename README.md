@@ -51,3 +51,8 @@ The data was downloaded from the City of Helsinki’s *Web Coverage Service
 description](https://hri.fi/data/fi/dataset/helsingin-korkeusmalli)).  We used
 [a script](scripts/download_elevation_model.py), that we share with this
 package, to download an crop the data to the sample data extent.
+
+
+## `r5py.sampledata.helsinki.elevation_model_lapinlahti`
+
+A cropped copy of `r5py.sampledata.helsinki.elevation_model`
