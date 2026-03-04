@@ -4,7 +4,6 @@ import importlib
 
 import pytest
 
-
 PACKAGE_NAME = "r5py.sampledata.helsinki"
 
 
