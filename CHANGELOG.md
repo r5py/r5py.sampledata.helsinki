@@ -1,3 +1,6 @@
+- **1.1.1** (2026-03-04):
+    - add another elevation model sample
+
 - **1.0.3** (2025-03-31):
     - add an elevation model data set
 
