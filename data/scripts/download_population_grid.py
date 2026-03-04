@@ -2,8 +2,9 @@
 
 """Download a population grid data set from HSY’s WFS service."""
 
-import geopandas
 import pathlib
+
+import geopandas
 
 
 def main():

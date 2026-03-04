@@ -2,13 +2,12 @@
 
 """Download an elevation model data set from HRI’s WCS service."""
 
-
 import pathlib
+import urllib.parse
+
 import rasterio
 import rasterio.mask
 import shapely
-import urllib.parse
-
 
 BOUNDING_BOX = (
     25494767,  # minx
